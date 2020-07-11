@@ -9,14 +9,12 @@
             <th>Id</th>
             <th>Name</th>
             <th>Picture</th>
-            <th>Type</th>
         </tr>
         @accounts.map { account =>
             <tr>
                 <td>@account.Id</td>
                 <td>@account.Name</td>
                 <td>@account.Picture__c</td>
-                <td>@account.Car_type__c</td>
             </tr>
         }
     </table>
