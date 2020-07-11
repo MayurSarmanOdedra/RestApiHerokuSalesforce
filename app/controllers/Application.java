@@ -114,7 +114,6 @@ public class Application extends Controller {
         public static class Account {
             public String Id;
             public String Name;
-            public String Car_type__c;
             public String Picture__c;
         }
 
