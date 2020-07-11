@@ -114,9 +114,8 @@ public class Application extends Controller {
         public static class Account {
             public String Id;
             public String Name;
-            public String Type;
-            public String Industry;
-            public String Rating;
+            public String Car_type__c;
+            public String Picture__c;
         }
 
         @JsonIgnoreProperties(ignoreUnknown = true)
@@ -142,7 +141,7 @@ public class Application extends Controller {
         CompletionStage<List<Account>> getAccounts(AuthInfo authInfo) {
             CompletionStage<WSResponse> responsePromise = ws.url(authInfo.instanceUrl + "/services/data/v34.0/query/")
                     .addHeader("Authorization", "Bearer " + authInfo.accessToken)
-                    .addQueryParameter("q", "SELECT Id, Name, Type, Industry, Rating FROM Account")
+                    .addQueryParameter("q", "SELECT Id, Name, Picture__c, Contact__r.Name, Car_type__c,  Geolocation__latitude__s, Geolocation__longitude__s FROM Car__c WHERE Available_For_Rent__c = true")
                     .get();
 
             return responsePromise.thenCompose(response -> {
